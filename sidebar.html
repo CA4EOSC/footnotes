@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="node_modules/xterm/css/xterm.css" />
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+            color: #000;
+        }
+
+        #terminal-container {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Hide scrollbars enforced by xterm container if unneeded */
+        .xterm-viewport {
+            overflow-y: hidden !important;
+        }
+
+        #save-note-btn {
+            display: none;
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            z-index: 1000;
+            padding: 8px 16px;
+            background: #3b82f6;
+            color: white;
+            font-family: sans-serif;
+            font-weight: 500;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s;
+        }
+
+        #save-note-btn:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="save-note-btn">📌 Save Note via Gemini</button>
+    <div id="terminal-container"></div>
+    <script src="node_modules/xterm/lib/xterm.js"></script>
+    <script src="node_modules/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
+    <script src="node_modules/xterm-addon-web-links/lib/xterm-addon-web-links.js"></script>
+    <script src="sidebar.js"></script>
+</body>
+
+</html>
