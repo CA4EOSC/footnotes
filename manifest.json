@@ -1,24 +1,37 @@
 {
     "manifest_version": 3,
-    "name": "Gemini CLI Sidebar",
+    "name": "Pale Fire Footnotes",
     "version": "1.0",
     "description": "An extension that provides an embedded terminal linked to your local machine.",
-    "permissions": [],
+    "permissions": [
+        "tabs",
+        "scripting",
+        "activeTab",
+        "sidePanel"
+    ],
     "content_security_policy": {
-        "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' ws://localhost:8765 ws://127.0.0.1:8765;"
+        "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' ws://localhost:8775 ws://127.0.0.1:8775;"
     },
     "host_permissions": [
-        "ws://localhost/*"
+        "http://localhost/*",
+        "https://localhost/*",
+        "<all_urls>"
     ],
     "browser_specific_settings": {
         "gecko": {
-            "id": "gemini-cli-sidebar@localhost",
-            "strict_min_version": "109.0"
+            "id": "pale-fire-footnotes@localhost",
+            "strict_min_version": "115.0"
         }
     },
     "sidebar_action": {
-        "default_title": "Gemini CLI",
+        "default_title": "Pale Fire Footnotes",
         "default_panel": "sidebar.html"
+    },
+    "action": {
+        "default_title": "Pale Fire Footnotes"
+    },
+    "side_panel": {
+        "default_path": "sidebar.html"
     },
     "background": {
         "scripts": [

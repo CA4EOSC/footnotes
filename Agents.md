@@ -1,6 +1,6 @@
 # Agents and Skills
 
-This document describes the agents and skills available within the `footnotes` project (Gemini CLI Sidebar).
+This document describes the agents and skills available within the `footnotes` project (AI Footnotes).
 
 ## Architecture
 
@@ -17,6 +17,14 @@ Skills are modular sets of instructions and tools housed in the `skills/` direct
 ### Notetaker
 - **Location**: `skills/notetaker/`
 - **Description**: Saves highlighted or provided text as a note in a local directory. Clicking "Save Note via Gemini" in the extension UI triggers this skill, creating uniquely named notes for later reference.
+
+### Interpretator
+- **Location**: `skills/interpretator/`
+- **Description**: Finds contradicting interpretations of a given fragment of text, comparing the pros and cons of each perspective to provide a balanced analysis.
+
+### Transcripter
+- **Location**: `skills/transcripter/`
+- **Description**: Extracts full English transcripts from YouTube videos using their video ID. This allows LLMs to summarize or analyze video content directly from YouTube links without hallucinating.
 
 ## Adding New Skills
 To add a new skill to the `footnotes` ecosystem:
