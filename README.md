@@ -27,7 +27,8 @@ This project cleanly separates concerns into two distinct areas:
 The extension relies on a Python WebSocket backend to bridge the browser with your local compute capabilities. Open your terminal and run the backend server from the `palefire` repository:
 
 ```bash
-cd /Users/vyacheslavtykhonov/projects/palefire/backend
+git clone https://github.com/agstack/palefire.git
+cd palefire/backend
 python3 backend.py
 ```
 *(This will start a robust, persistent WebSocket server on `ws://127.0.0.1:8775`)*
