@@ -404,7 +404,7 @@ switchFocusBtn.addEventListener('click', () => {
                         if (pages.length === 0 || pages[currentPageIndex].length > 0) {
                             createNewPage();
                         }
-                        appendMessage(`*Switching focus to read Youtube video transcript ${currentUrl}*`, 'user');
+                        appendMessage(`*Analyzing video ${currentUrl}*`, 'user');
                         ws.send(JSON.stringify({ type: 'input', data: autoPrompt }));
                         isWaitingForResponse = true;
                         updateInputState();
