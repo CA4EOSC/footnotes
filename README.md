@@ -34,10 +34,14 @@ python3 backend.py
 *(This will start a robust, persistent WebSocket server on `ws://127.0.0.1:8775`)*
 
 ### 2. Load the Browser Extension
+Download the frontend part from your terminal:
+```bash
+git clone https://github.com/CA4EOSC/footnotes/
+```
 **For Chrome/Chromium:**
 1. Navigate to `chrome://extensions/`.
 2. Enable **Developer mode** in the top right.
-3. Click **Load unpacked** and select the `/Users/vyacheslavtykhonov/projects/footnotes` extension directory.
+3. Click **Load unpacked** and select the `footnotes` extension directory.
 
 **For Firefox:**
 1. Navigate to `about:debugging#/runtime/this-firefox`.
