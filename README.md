@@ -11,10 +11,11 @@ A browser extension that acts as a robust research and metadata extraction engin
 
 ## Prerequisites
 - Node.js and NPM
-- Python 3.x
-- `websockets` Python package (`pip install websockets`)
-- `youtube-transcript-api` Python package
-- `gemini` CLI installed and available in your PATH (expected at `/opt/homebrew/bin/gemini` or generic local path).
+- `gemini` CLI installed and available in your PATH. Install it via NPM:
+  ```bash
+  npm install -g @google-gemini/gemini-cli
+  ```
+
 
 ## Architecture Details
 This project cleanly separates concerns into two distinct areas:
@@ -34,8 +35,8 @@ python3 backend.py
 *(This will start a robust, persistent WebSocket server on `ws://127.0.0.1:8775`)*
 
 ### 2. Load the Browser Extension
-**For Chrome/Chromium:**
-1. Navigate to `chrome://extensions/`.
+**For Chrome / Brave / Opera:**
+1. Navigate to `chrome://extensions/` (Chrome), `brave://extensions/` (Brave), or `opera://extensions/` (Opera).
 2. Enable **Developer mode** in the top right.
 3. Click **Load unpacked** and select the `/Users/vyacheslavtykhonov/projects/footnotes` extension directory.
 
@@ -43,7 +44,36 @@ python3 backend.py
 1. Navigate to `about:debugging#/runtime/this-firefox`.
 2. Click **Load Temporary Add-on** and select the `manifest.json` file.
 
-### 3. Usage
+**For Safari:**
+1. Enable the **Develop** menu: Go to `Safari > Settings > Advanced` and check **Show features for web developers**.
+2. Enable **Allow Unsigned Extensions**: In the **Develop** menu, check **Allow Unsigned Extensions**.
+3. Convert the extension: Open your terminal and run:
+   ```bash
+   xcrun safari-web-extension-converter /Users/vyacheslavtykhonov/projects/footnotes
+   ```
+4. Build & Run: Open the generated Xcode project, click **Run**, and then enable the extension in Safari Settings.
+
+### 3. Advanced: GKE Inference Engine Setup
+This extension supports cost-effective LLM workloads by connecting to a GKE-hosted inference engine via the Gemini CLI and the `gke-mcp` extension.
+
+For detailed instructions, see the [Google Cloud Blog: Use Gemini CLI for cost-effective LLM workloads on GKE](https://cloud.google.com/blog/products/containers-kubernetes/use-gemini-cli-for-cost-effective-llm-workloads-on-gke).
+
+**Setup Steps:**
+1. **Install Gemini CLI**:
+   ```bash
+   npm install -g @google-gemini/gemini-cli
+   ```
+2. **Install GKE Extension (gke-mcp)**:
+   ```bash
+   gemini extensions install https://github.com/GoogleCloudPlatform/gke-mcp.git
+   ```
+3. **Configure & Deploy**:
+   Use natural language or the Inference Quickstart to deploy your models to GKE. Example:
+   ```bash
+   gemini "select and serve an LLM workload on my GKE cluster"
+   ```
+
+### 4. Usage
 1. Click the extension icon in your browser toolbar to open the AI Footnotes sidebar.
 2. The sidebar will automatically connect to your local backend and load your persistent interaction history.
 3. **Automated Site Analysis**: Navigate to any complex webpage or YouTube video. Click the **"Analyze page"** button at the top of the chat. The LLM will fetch the video transcript (or DOM), summarize it, quietly orchestrate Python to write structural `Croissant JSON-LD` and `CSV` files directly to your backend, and ask if you'd like to render a Markdown table mapping all explicit variables found on the page.
