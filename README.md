@@ -1,6 +1,6 @@
 # Pale Fire Footnotes Extension
 
-A browser extension that acts as a robust research and metadata extraction engine. It natively connects your browser to a persistent background local PTY (pseudo-terminal) backend (`backend.py`), running the `gemini --yolo` CLI interface.
+A browser extension that acts as a robust research and metadata extraction engine for ClimateAdapt4EOSC project. It natively connects your browser to a persistent background local PTY (pseudo-terminal) backend (`backend.py`), running the `gemini --yolo` CLI interface.
 
 ## Features
 - **CDIF & Machine Learning Metadata Mining**: Natively click **Analyze page** natively in your browser to extract complex numerical, qualitative, and geographical variables from the current webpage or YouTube video transcript into `CSV`. 
@@ -35,10 +35,10 @@ python3 backend.py
 *(This will start a robust, persistent WebSocket server on `ws://127.0.0.1:8775`)*
 
 ### 2. Load the Browser Extension
-**For Chrome / Brave / Opera:**
-1. Navigate to `chrome://extensions/` (Chrome), `brave://extensions/` (Brave), or `opera://extensions/` (Opera).
+**For Chrome/Chromium:**
+1. Navigate to `chrome://extensions/`.
 2. Enable **Developer mode** in the top right.
-3. Click **Load unpacked** and select the `/Users/vyacheslavtykhonov/projects/footnotes` extension directory.
+3. Click **Load unpacked** and select the `footnotes` extension directory.
 
 **For Firefox:**
 1. Navigate to `about:debugging#/runtime/this-firefox`.
@@ -49,7 +49,7 @@ python3 backend.py
 2. Enable **Allow Unsigned Extensions**: In the **Develop** menu, check **Allow Unsigned Extensions**.
 3. Convert the extension: Open your terminal and run:
    ```bash
-   xcrun safari-web-extension-converter /Users/vyacheslavtykhonov/projects/footnotes
+   xcrun safari-web-extension-converter footnotes
    ```
 4. Build & Run: Open the generated Xcode project, click **Run**, and then enable the extension in Safari Settings.
 
